@@ -1,36 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Todo app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="src/style.css" />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <script type="module" src="script.js" defer></script>
 
-  Todo
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <div id="page-container">
+      <header>
+        <h1>LIISTS</h1>
 
-  <!-- Add dynamic number --> items left
+        <input
+          type="range"
+          name="theme-switcher"
+          id="theme-switcher"
+          min="0"
+          max="2"
+          value="0"
+          list="tickmarks"
+          aria-label="Switch theme"
+          title="Switch theme"
+        />
 
-  All
-  Active 
-  Completed
+        <datalist id="tickmarks">
+          <option value="0"></option>
+          <option value="1"></option>
+          <option value="2"></option>
+        </datalist>
 
-  Clear Completed
+        <label for="theme-switch">
+          <img src="./images/icon-moon.svg" alt="" />
+        </label>
+      </header>
 
-  Drag and drop to reorder list
+      <section>
+        <h2>Lists</h2>
+        <form action="#" data-new-list-form>
+          <input
+            type="text"
+            name="new-list-input"
+            id="new-list-input"
+            placeholder="New list name..."
+            data-new-list-input
+          />
+          <button type="submit">Add</button>
+        </form>
 
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+        <ul data-lists></ul>
+      </section>
+
+      <section data-list-display-container>
+        <h3 data-list-title></h3>
+        <form action="#" data-new-list-item-form>
+          <input
+            type="text"
+            name="new-list-item-input"
+            id="new-list-item-input"
+            placeholder="List item description..."
+            data-new-list-item-input
+          />
+          <button type="submit">Add</button>
+        </form>
+
+        <ul data-list-items></ul>
+
+        <div>
+          <span data-unchecked-list-items-count></span>
+          <button data-clear-checked-btn>Clear Checked</button>
+          <button data-delete-list-btn>Delete List</button>
+        </div>
+      </section>
+
+      <div data-filters>
+        <button class="active">All</button>
+        <button>Active</button>
+        <button>Completed</button>
+      </div>
+
+      <p id="drag-hint">Drag and drop to reorder list</p>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="twitter.com/chrisandrew_dev">@chrisandrew_dev</a>.
+    </div>
+
+    <template data-list-template>
+      <li></li>
+    </template>
+
+    <template data-list-item-template>
+      <li>
+        <input type="checkbox" />
+        <label for="">
+          <span class="custom-checkbox"></span>
+        </label>
+      </li>
+    </template>
+  </body>
 </html>
