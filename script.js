@@ -1,6 +1,12 @@
 import List from "./src/List.js";
 import ListItem from "./src/ListItem.js";
 
+let themes;
+
+fetch("./src/themes.json")
+  .then((response) => response.json())
+  .then((data) => (themes = data));
+
 const LOCAL_STORAGE_LISTS_KEY = "todoApp.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "todoApp.listItems";
 
@@ -113,10 +119,23 @@ function save() {
 function changeTheme(e) {
   switch (e.target.value) {
     case "0":
+      applyTheme("light theme");
       break;
     case "1":
+      applyTheme("dark theme");
       break;
     case "2":
+      applyTheme("eyecare theme");
+  }
+}
+
+function applyTheme(name) {
+  const selectedTheme = themes.find((theme) => theme.name === name);
+  for (const property in selectedTheme.properties) {
+    document.documentElement.style.setProperty(
+      property,
+      selectedTheme.properties[property]
+    );
   }
 }
 
