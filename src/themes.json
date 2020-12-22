@@ -1,0 +1,49 @@
+{
+  "themes": [
+    {
+      "name": "light theme",
+      "icon": "fas fa-sun",
+      "attributes": {
+        "--clr-text-h1": "white",
+        "--clr-text-primary": "hsl(235, 19%, 35%)",
+        "--clr-text-secondary": "hsl(236, 9%, 61%)",
+        "--clr-fill": "white",
+        "--clr-accent-primary": "hsl(220, 98%, 61%)",
+        "--clr-muted": "lightgrey",
+        "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
+        "--bg-mobile": "hsl(0, 0%, 98%) url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
+        "--bg-desktop": "hsl(0, 0%, 98%) url(\"../images/bg-desktop-light.jpg\") top center / contain no-repeat"
+      }
+    },
+    {
+      "name": "dark theme",
+      "icon": "fas fa-moon",
+      "attributes": {
+        "--clr-text-h1": "white",
+        "--clr-text-primary": "hsl(235, 19%, 35%)",
+        "--clr-text-secondary": "hsl(236, 9%, 61%)",
+        "--clr-fill": "white",
+        "--clr-accent-primary": "hsl(220, 98%, 61%)",
+        "--clr-muted": "lightgrey",
+        "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
+        "--bg-mobile": "hsl(0, 0%, 98%) url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
+        "--bg-desktop": "hsl(0, 0%, 98%) url(\"../images/bg-desktop-light.jpg\") top center / contain no-repeat"
+      }
+    },
+    {
+      "name": "eyecare theme",
+      "icon": "fas fa-eye",
+      "attributes": {
+        "--clr-text-h1": "white",
+        "--clr-text-primary": "hsl(235, 19%, 35%)",
+        "--clr-text-secondary": "hsl(236, 9%, 61%)",
+        "--clr-fill": "white",
+        "--clr-accent-primary": "hsl(220, 98%, 61%)",
+        "--clr-muted": "lightgrey",
+        "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
+        "--bg-mobile": "hsl(0, 0%, 98%) url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
+        "--bg-desktop": "hsl(0, 0%, 98%) url(\"../images/bg-desktop-light.jpg\") top center / contain no-repeat"
+      }
+    }
+  ]
+}

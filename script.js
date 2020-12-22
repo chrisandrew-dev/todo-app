@@ -1,15 +1,18 @@
 import List from "./src/List.js";
 import ListItem from "./src/ListItem.js";
 
-// DATA
-const LOCAL_STORAGE_LISTS_KEY = "liistsApp.lists";
-const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "liistsApp.listItems";
+const LOCAL_STORAGE_LISTS_KEY = "todoApp.lists";
+const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "todoApp.listItems";
 
 let lists = JSON.parse(localStorage.getItem(LOCAL_STORAGE_LISTS_KEY)) || [];
 let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 
 // EVENT LISTENERS
-// New list form events
+// Theme slider
+const themeSlider = document.querySelector("input[type='range']");
+themeSlider.addEventListener("change", changeTheme);
+
+// New list form
 const newListForm = document.querySelector("[data-new-list-form]");
 newListForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -28,9 +31,8 @@ newListForm.addEventListener("submit", (e) => {
   render();
 });
 
-// Lists container events
+// Lists container
 const listsContainer = document.querySelector("[data-lists]");
-
 listsContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "li") {
     selectedListId = e.target.dataset.listId;
@@ -39,7 +41,7 @@ listsContainer.addEventListener("click", (e) => {
   }
 });
 
-// New list item form events
+// New list item form
 const newListItemForm = document.querySelector("[data-new-list-item-form]");
 newListItemForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -58,8 +60,8 @@ newListItemForm.addEventListener("submit", (e) => {
   render();
 });
 
-// List item events
-const listItemsContainer = document.querySelector("[data-list-items]");
+// List item
+export const listItemsContainer = document.querySelector("[data-list-items]");
 listItemsContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "input") {
     const selectedList = lists.find((list) => list.id === selectedListId);
@@ -70,7 +72,7 @@ listItemsContainer.addEventListener("click", (e) => {
   }
 });
 
-// Clear Completed button events
+// Clear button
 const clearCheckedBtn = document.querySelector("[data-clear-checked-btn]");
 clearCheckedBtn.addEventListener("click", (e) => {
   const selectedList = lists.find((list) => list.id === selectedListId);
@@ -80,7 +82,7 @@ clearCheckedBtn.addEventListener("click", (e) => {
   render();
 });
 
-// Delete List button events
+// Delete List button
 const deleteListBtn = document.querySelector("[data-delete-list-btn]");
 deleteListBtn.addEventListener("click", (e) => {
   lists = lists.filter((list) => list.id != selectedListId);
@@ -90,7 +92,7 @@ deleteListBtn.addEventListener("click", (e) => {
   render();
 });
 
-// Filter button events
+// Filter buttons
 const filtersContainer = document.querySelector("[data-filters]");
 filtersContainer.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() === "button") {
@@ -108,6 +110,16 @@ function save() {
 }
 
 // RENDERING LOGIC
+function changeTheme(e) {
+  switch (e.target.value) {
+    case "0":
+      break;
+    case "1":
+      break;
+    case "2":
+  }
+}
+
 function render() {
   const listDisplayContainer = document.querySelector(
     "[data-list-display-container]"
@@ -145,6 +157,17 @@ function renderSelectedList(selectedList) {
   const listTitleElement = document.querySelector("[data-list-title]");
   listTitleElement.innerText = selectedList.name;
 
+  const listItemsOptionsContainer = document.querySelector(
+    "[data-list-items-options]"
+  );
+  if (!selectedList.items.length) {
+    listItemsOptionsContainer.style.display = "none";
+    filtersContainer.style.display = "none";
+    return;
+  }
+
+  listItemsOptionsContainer.style.display = "";
+  filtersContainer.style.display = "";
   renderSelectedListItems(selectedList);
   renderSelectedListUncheckedCount(selectedList);
 }
@@ -165,8 +188,8 @@ function applyFilter(selectedList) {
     default:
       return [
         selectedList.items.filter((item) => !item.checked),
-        selectedList.items.filter((item) => item.checked)
-      ]
+        selectedList.items.filter((item) => item.checked),
+      ];
   }
 }
 

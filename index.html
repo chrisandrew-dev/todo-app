@@ -11,6 +11,10 @@
       href="./images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
 
     <script type="module" src="script.js" defer></script>
 
@@ -19,12 +23,12 @@
   <body>
     <div id="page-container">
       <header>
-        <h1>LIISTS</h1>
+        <h1>TODO</h1>
 
         <input
           type="range"
-          name="theme-switcher"
-          id="theme-switcher"
+          name="theme-switch"
+          id="theme-switch"
           min="0"
           max="2"
           value="0"
@@ -40,55 +44,71 @@
         </datalist>
 
         <label for="theme-switch">
-          <img src="./images/icon-moon.svg" alt="" />
+          <i></i>
         </label>
       </header>
 
-      <section>
-        <h2>Lists</h2>
-        <form action="#" data-new-list-form>
-          <input
-            type="text"
-            name="new-list-input"
-            id="new-list-input"
-            placeholder="New list name..."
-            data-new-list-input
-          />
-          <button type="submit">Add</button>
-        </form>
+      <main>
+        <section id="lists-section">
+          <h2>Lists</h2>
+          <form action="#" data-new-list-form>
+            <input
+              type="text"
+              name="new-list-input"
+              id="new-list-input"
+              placeholder="New list name"
+              data-new-list-input
+            />
+            <button type="submit" title="Add list" aria-label="Add list">
+              <i class="fas fa-plus"></i>
+            </button>
+          </form>
 
-        <ul data-lists></ul>
-      </section>
+          <ul data-lists></ul>
+        </section>
 
-      <section data-list-display-container>
-        <h3 data-list-title></h3>
-        <form action="#" data-new-list-item-form>
-          <input
-            type="text"
-            name="new-list-item-input"
-            id="new-list-item-input"
-            placeholder="List item description..."
-            data-new-list-item-input
-          />
-          <button type="submit">Add</button>
-        </form>
+        <section data-list-display-container>
+          <h3 data-list-title></h3>
+          <form action="#" data-new-list-item-form>
+            <input
+              type="text"
+              name="new-list-item-input"
+              id="new-list-item-input"
+              placeholder="New item description"
+              data-new-list-item-input
+            />
+            <button type="submit" title="Add list item" aria-label="Add list item">
+              <i class="fas fa-plus"></i>
+            </button>
+          </form>
 
-        <ul data-list-items></ul>
+          <ul id="list-items" data-list-items></ul>
 
-        <div>
-          <span data-unchecked-list-items-count></span>
-          <button data-clear-checked-btn>Clear Checked</button>
-          <button data-delete-list-btn>Delete List</button>
-        </div>
-      </section>
+          <div id="list-items-options" data-list-items-options>
+            <span data-unchecked-list-items-count></span>
+            <button
+              title="Clear checked items"
+              aria-label="Clear checked items"
+              data-clear-checked-btn
+            >
+              <i class="fas fa-snowplow"></i>
+            </button>
+            <button
+              title="Delete list"
+              aria-label="Delete list"
+              data-delete-list-btn
+            >
+              <i class="fas fa-bomb"></i>
+            </button>
+          </div>
+        </section>
+      </main>
 
-      <div data-filters>
-        <button class="active">All</button>
+      <div id="data-filters" data-filters>
+        <button>All</button>
         <button>Active</button>
         <button>Completed</button>
       </div>
-
-      <p id="drag-hint">Drag and drop to reorder list</p>
     </div>
 
     <div class="attribution">
@@ -106,7 +126,16 @@
       <li>
         <input type="checkbox" />
         <label for="">
-          <span class="custom-checkbox"></span>
+          <span class="custom-checkbox">
+            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="9">
+              <path
+                fill="none"
+                stroke="#FFF"
+                stroke-width="2"
+                d="M1 4.304L3.696 7l6-6"
+              />
+            </svg>
+          </span>
         </label>
       </li>
     </template>
