@@ -33,14 +33,14 @@
     "name": "reader theme",
     "icon": "fas fa-eye",
     "properties": {
-      "--clr-text-h1": "brown",
+      "--clr-text-h1": "#FFE4E1",
       "--clr-text-primary": "maroon",
       "--clr-text-secondary": "rgb(185, 153, 153)",
       "--clr-fill": "rgb(255, 228, 225)",
       "--clr-accent-primary": "rgb(201, 0, 33)",
-      "--clr-lines": "rgb(255, 220, 220)",
+      "--clr-lines": "#e0b5ba",
       "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
-      "--bg-mobile": "#F7D7D7 url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
+      "--bg-mobile": "#F7D7D7 url(\"../images/bg-mobile-reader.jpg\") top center / contain no-repeat",
       "--bg-desktop": "#F7D7D7 url(\"../images/bg-desktop-reader.jpg\") top center / contain no-repeat"
     }
   }
