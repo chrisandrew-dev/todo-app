@@ -28,13 +28,14 @@ body {
   background: var(--bg-mobile);
   color: var(--clr-text-primary);
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 #page-container {
+  margin: 0 auto;
   min-width: 330px;
   max-width: 1000px;
   width: 85%;
-  margin: 0 auto;
 }
 
 header {
@@ -144,6 +145,7 @@ h3 {
   text-transform: uppercase;
   margin: calc(var(--spacer) * 2) 0 calc(var(--spacer) * 0.8)
     calc(var(--spacer) / 2);
+    text-shadow: -1px 1px var(--clr-text-h1);
 }
 
 button {
@@ -212,6 +214,7 @@ ul {
     min-height: var(--row-height);
     background-color: var(--clr-fill);
     padding-left: var(--spacer);
+    flex-wrap: wrap;
 
     label {
       display: flex;
@@ -270,7 +273,7 @@ ul#list-items {
   margin-bottom: 0;
 }
 
-#lists-section li:last-child {
+#lists-display-container li:last-child {
   border-radius: 0 0 0.4em 0.4em;
 }
 
@@ -348,9 +351,9 @@ ul#list-items {
   }
 }
 
-@media only screen and (min-width: 650px) {
-  body {
-    font-size: 1.125rem;
+@media only screen and (min-width: 675px) {
+  body, form input, #data-filters button {
+    font-size: 1.05rem;
   }
 
   h2 {
@@ -362,11 +365,11 @@ ul#list-items {
     align-items: baseline;
     justify-content: space-between;
 
-    section:first-child {
+    #lists-display-container {
       width: 40%;
     }
 
-    section:last-child {
+    #list-display-container {
       width: 55%;
       margin-left: var(--spacer);
     }

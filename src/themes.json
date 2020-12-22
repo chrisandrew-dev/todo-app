@@ -4,7 +4,7 @@
     "icon": "fas fa-sun",
     "properties": {
       "--clr-text-h1": "white",
-      "--clr-text-primary": "hsl(235, 19%, 35%)",
+      "--clr-text-primary": "#484B6A",
       "--clr-text-secondary": "hsl(236, 9%, 61%)",
       "--clr-fill": "white",
       "--clr-accent-primary": "hsl(220, 98%, 61%)",

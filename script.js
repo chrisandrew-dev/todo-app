@@ -92,7 +92,7 @@ clearCheckedBtn.addEventListener("click", (e) => {
 const deleteListBtn = document.querySelector("[data-delete-list-btn]");
 deleteListBtn.addEventListener("click", (e) => {
   lists = lists.filter((list) => list.id != selectedListId);
-  lists.length ? (selectedListId = lists[0].id) : (selectedListId = null);
+  selectedListId = null;
 
   save();
   render();
@@ -133,17 +133,22 @@ function render() {
   const listDisplayContainer = document.querySelector(
     "[data-list-display-container]"
   );
+  const listsDisplayContainer = document.querySelector(
+    "[data-lists-display-container]"
+  );
 
   renderLists();
 
-  if (selectedListId == null) {
+  if (selectedListId == null || !lists.length) {
     listDisplayContainer.style.display = "none";
+    listsDisplayContainer.style.width = "100%";
   } else {
-    const selectedList = lists.find((list) => list.id === selectedListId);
     listDisplayContainer.style.display = "";
-
-    renderSelectedList(selectedList);
+    listsDisplayContainer.style.width = "";
   }
+  
+  const selectedList = lists.find((list) => list.id === selectedListId);
+  renderSelectedList(selectedList);
 }
 
 function clear(node) {
