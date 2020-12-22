@@ -131,6 +131,9 @@ function changeTheme(e) {
 
 function applyTheme(name) {
   const selectedTheme = themes.find((theme) => theme.name === name);
+  const themeIconElement = document.querySelector("i");
+  themeIconElement.className = selectedTheme.icon;
+
   for (const property in selectedTheme.properties) {
     document.documentElement.style.setProperty(
       property,
@@ -168,6 +171,12 @@ function renderLists() {
     const listElement = createListElement(listObj);
     listsContainer.appendChild(listElement);
   });
+
+  const lastListElement = listsContainer.querySelector("li:last-child");
+
+  if (lists.length === 1) {
+    lastListElement.style.borderRadius = "0.4em";
+  }
 }
 
 function renderSelectedList(selectedList) {
@@ -176,19 +185,21 @@ function renderSelectedList(selectedList) {
   const listTitleElement = document.querySelector("[data-list-title]");
   listTitleElement.innerText = selectedList.name;
 
+  renderSelectedListItems(selectedList);
+  renderSelectedListUncheckedCount(selectedList);
+
   const listItemsOptionsContainer = document.querySelector(
     "[data-list-items-options]"
   );
-  if (!selectedList.items.length) {
-    listItemsOptionsContainer.style.display = "none";
-    filtersContainer.style.display = "none";
-    return;
+  if (!listItemsContainer.hasChildNodes()) {
+    listItemsOptionsContainer.style.borderRadius = "0.4em";
+    listItemsOptionsContainer.style.borderTop = "none";
+    clearCheckedBtn.style.color = "var(--clr-lines)";
+  } else {
+    listItemsOptionsContainer.style.borderRadius = "";
+    listItemsOptionsContainer.style.borderTop = "";
+    clearCheckedBtn.style.color = "";
   }
-
-  listItemsOptionsContainer.style.display = "";
-  filtersContainer.style.display = "";
-  renderSelectedListItems(selectedList);
-  renderSelectedListUncheckedCount(selectedList);
 }
 
 function renderSelectedListItems(selectedList) {
@@ -197,18 +208,18 @@ function renderSelectedListItems(selectedList) {
 }
 
 function applyFilter(selectedList) {
+  const uncheckedItems = selectedList.items.filter((item) => !item.checked);
+  const checkedItems = selectedList.items.filter((item) => item.checked);
+
   switch (selectedList.filter) {
     case "Active":
-      return [selectedList.items.filter((item) => !item.checked)];
+      return [uncheckedItems];
       break;
     case "Completed":
-      return [selectedList.items.filter((item) => item.checked)];
+      return [checkedItems];
       break;
     default:
-      return [
-        selectedList.items.filter((item) => !item.checked),
-        selectedList.items.filter((item) => item.checked),
-      ];
+      return [uncheckedItems, checkedItems];
   }
 }
 
