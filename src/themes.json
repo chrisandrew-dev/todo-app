@@ -18,30 +18,30 @@
     "name": "dark theme",
     "icon": "fas fa-moon",
     "properties": {
-      "--clr-text-h1": "white",
-      "--clr-text-primary": "hsl(234, 39%, 85%)",
-      "--clr-text-secondary": "hsl(236, 9%, 61%)",
-      "--clr-fill": "hsl(235, 24%, 19%)",
+      "--clr-text-h1": "rgb(236, 236, 236)",
+      "--clr-text-primary": "#CACDE8",
+      "--clr-text-secondary": "#9392A5",
+      "--clr-fill": "#25273C",
       "--clr-accent-primary": "hsl(220, 98%, 61%)",
-      "--clr-lines": "hsl(233, 14%, 35%)",
+      "--clr-lines": "#4D5066",
       "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
       "--bg-mobile": "hsl(235, 21%, 11%) url(\"../images/bg-mobile-dark.jpg\") top center / contain no-repeat",
       "--bg-desktop": "hsl(235, 21%, 11%) url(\"../images/bg-desktop-dark.jpg\") top center / contain no-repeat"
     }
   },
   {
-    "name": "eyecare theme",
+    "name": "reader theme",
     "icon": "fas fa-eye",
     "properties": {
-      "--clr-text-h1": "white",
-      "--clr-text-primary": "hsl(235, 19%, 35%)",
-      "--clr-text-secondary": "hsl(236, 9%, 61%)",
-      "--clr-fill": "white",
-      "--clr-accent-primary": "hsl(220, 98%, 61%)",
-      "--clr-lines": "lightgrey",
+      "--clr-text-h1": "brown",
+      "--clr-text-primary": "maroon",
+      "--clr-text-secondary": "rgb(185, 153, 153)",
+      "--clr-fill": "rgb(255, 228, 225)",
+      "--clr-accent-primary": "rgb(201, 0, 33)",
+      "--clr-lines": "rgb(255, 220, 220)",
       "--clr-box-shadow": "0 1em 2em rgba(0, 0, 0, 0.2)",
-      "--bg-mobile": "hsl(0, 0%, 98%) url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
-      "--bg-desktop": "hsl(0, 0%, 98%) url(\"../images/bg-desktop-light.jpg\") top center / contain no-repeat"
+      "--bg-mobile": "#F7D7D7 url(\"../images/bg-mobile-light.jpg\") top center / contain no-repeat",
+      "--bg-desktop": "#F7D7D7 url(\"../images/bg-desktop-reader.jpg\") top center / contain no-repeat"
     }
   }
 ]

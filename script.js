@@ -5,7 +5,7 @@ let themes;
 
 fetch("./src/themes.json")
   .then((response) => response.json())
-  .then((data) => (themes = data));
+  .then((jsonResponse) => (themes = jsonResponse));
 
 const LOCAL_STORAGE_LISTS_KEY = "todoApp.lists";
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = "todoApp.listItems";
@@ -16,7 +16,7 @@ let selectedListId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY);
 // EVENT LISTENERS
 // Theme slider
 const themeSlider = document.querySelector("input[type='range']");
-themeSlider.addEventListener("change", changeTheme);
+themeSlider.addEventListener("change", applyTheme);
 
 // New list form
 const newListForm = document.querySelector("[data-new-list-form]");
@@ -116,30 +116,17 @@ function save() {
 }
 
 // RENDERING LOGIC
-function changeTheme(e) {
-  switch (e.target.value) {
-    case "0":
-      applyTheme("light theme");
-      break;
-    case "1":
-      applyTheme("dark theme");
-      break;
-    case "2":
-      applyTheme("eyecare theme");
-  }
-}
-
-function applyTheme(name) {
-  const selectedTheme = themes.find((theme) => theme.name === name);
-  const themeIconElement = document.querySelector("i");
-  themeIconElement.className = selectedTheme.icon;
-
+function applyTheme() {
+  const selectedTheme = themes[themeSlider.value]; 
   for (const property in selectedTheme.properties) {
     document.documentElement.style.setProperty(
       property,
       selectedTheme.properties[property]
-    );
-  }
+      );
+    }
+    
+  const themeIconElement = document.querySelector("i");
+  themeIconElement.className = selectedTheme.icon;
 }
 
 function render() {
@@ -275,3 +262,4 @@ function createListItemElement(item) {
 
 // RUN ON LOAD
 render();
+applyTheme();

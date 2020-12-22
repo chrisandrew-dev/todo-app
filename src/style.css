@@ -380,7 +380,7 @@ ul#list-items {
 
 @media only screen and (min-width: 600px) {
   body {
-    background-image: url(../images/bg-desktop-light.jpg);
+    background: var(--bg-desktop);
   }
   header {
     margin-top: calc(var(--spacer) * 4.6);
